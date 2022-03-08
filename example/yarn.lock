@@ -5758,7 +5758,7 @@ react-is@^17.0.1:
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
 react-native-carplay@./..:
-  version "2.0.0"
+  version "2.1.0"
   dependencies:
     traverse "^0.6.6"
 
