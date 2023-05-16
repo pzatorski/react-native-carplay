@@ -27,7 +27,6 @@ export class InformationTemplate extends Template<InformationTemplateConfig> {
   get eventMap() {
     return {
       actionButtonPressed: 'onActionButtonPressed',
-      backButtonPressed: 'onBackButtonPressed',
     };
   }
 

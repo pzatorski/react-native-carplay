@@ -247,7 +247,6 @@ RCT_EXPORT_METHOD(createTemplate:(NSString *)templateId config:(NSDictionary*)co
         NSMutableArray<__kindof CPTextButton *> * actions = [self parseInformationActions:_actions templateId:templateId];
 
         CPInformationTemplate *informationTemplate = [[CPInformationTemplate alloc] initWithTitle:title layout:layout items:items actions:actions];
-        [informationTemplate setBackButton:backButton];
         template = informationTemplate;
     }
 
