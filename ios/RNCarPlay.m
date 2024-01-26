@@ -871,10 +871,24 @@ RCT_EXPORT_METHOD(updateMapTemplateMapButtons:(NSString*) templateId mapButtons:
     else if (units && [units isEqualToString: @"yards"]) {
         unit = [NSUnitLength yards];
     }
-
-    NSMeasurement *distance = [[NSMeasurement alloc] initWithDoubleValue:value unit:unit];
+    
     double time = [RCTConvert double:json[@"timeRemaining"]];
-
+    if (value < 0 && time >= 0) {
+        if (time >= 3600) {
+            unit = [NSUnitDuration hours];
+            value = lroundf(time / 3600);
+        }
+        else if (time < 60) {
+            unit = [NSUnitDuration seconds];
+            value = time;
+        }
+        else {
+            unit = [NSUnitDuration minutes];
+            value = lroundf(time / 60);
+        }
+    }
+    
+    NSMeasurement *distance = [[NSMeasurement alloc] initWithDoubleValue:value unit:unit];
     return [[CPTravelEstimates alloc] initWithDistanceRemaining:distance timeRemaining:time];
 }
 
