@@ -154,18 +154,24 @@ class CarPlayInterface {
 
   /**
    * The current root template in the template navigation hierarchy.
-   * @todo Not implemented yet
    */
   public get rootTemplate(): Promise<string> {
-    return Promise.resolve('');
+    return new Promise(resolve => {
+      this.bridge.getRootTemplate((templateId) => {
+          resolve(templateId);
+      });
+    });
   }
 
   /**
    * The top-most template in the navigation hierarchy stack.
-   * @todo Not implemented yet
    */
   public get topTemplate(): Promise<string> {
-    return Promise.resolve('');
+    return new Promise(resolve => {
+      this.bridge.getTopTemplate((templateId) => {
+          resolve(templateId);
+      });
+    });
   }
 
   /**

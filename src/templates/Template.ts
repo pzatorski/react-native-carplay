@@ -71,6 +71,11 @@ export interface TemplateConfig {
    * @param e Event
    */
   onBarButtonPressed?(e: BarButtonEvent): void;
+
+  /**
+   * Fired when popToRootTemplate finished
+   */
+  onPoppedToRoot?(e: BaseEvent): void;
 }
 
 export class Template<P> {
@@ -102,6 +107,7 @@ export class Template<P> {
       didDisappear: 'onDidDisappear',
       willAppear: 'onWillAppear',
       willDisappear: 'onWillDisappear',
+      poppedToRoot: 'onPoppedToRoot',
       ...(this.eventMap || {}),
     };
 
