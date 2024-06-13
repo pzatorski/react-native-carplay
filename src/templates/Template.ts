@@ -89,6 +89,8 @@ export class Template<P> {
     return {};
   }
 
+  onDisconnectCallback = () => this.destroy();
+
   constructor(public config: TemplateConfig & P) {
     if (config.id) {
       this.id = config.id;
@@ -123,6 +125,8 @@ export class Template<P> {
     if (this.type !== 'map') {
       CarPlay.bridge.createTemplate(this.id, this.parseConfig({ type: this.type, ...config }));
     }
+
+    CarPlay.registerOnDisconnect(this.onDisconnectCallback);
   }
 
   public parseConfig(config: any) {
@@ -138,6 +142,7 @@ export class Template<P> {
   }
 
   public destroy() {
+    CarPlay.unregisterOnDisconnect(this.onDisconnectCallback);
     this.listeners.forEach(listener => listener.remove());
   }
 }
